@@ -5,6 +5,8 @@ autocmd BufNewFile,BufRead *.ans set filetype=ansible
 "       the 'a' as meaning ansible!
 autocmd BufNewFile,BufRead *.yaml set filetype=ansible
 
+autocmd BufNewFile,BufRead */vars/*.yml,*/defaults/*.yml,*/handlers/*.yml,*/meta/*.yml,*/tasks/*.yml set filetype=ansible
+
 " Does not work in this file; needs to be in ../scripts.vim to see contents.
 "if getline(1) =~ '^---$' | setfiletype ansible | endif
 
