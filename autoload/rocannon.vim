@@ -82,9 +82,9 @@ fun! rocannon#OpenAlternate(action, category)
   "        - open dir (browser) for files and templates
   " NOTE: connecting vars with / to avoid "not a file" message
   let fname = expand('%:p:t')
-  let role = expand('%:p:h:h:t') . '/'
+  let role = expand('%:p:h:h') . '/'
   "echom 'will look for: roles/' . role . a:category . '/' . fname
-  if filereadable('roles/' . role . a:category . '/' . fname)
+  if filereadable( role . a:category . '/' . fname)
     let tgt = '/' . fname
   elseif a:category == 'files' || a:category == 'templates'
     " Just open the dir (with vim a file browser like nerdtree or default)
@@ -92,5 +92,5 @@ fun! rocannon#OpenAlternate(action, category)
   else
     let tgt = '/main.yaml'
   endif
-  exe a:action . ' roles/' . role . a:category . tgt
+  exe a:action . role . a:category . tgt
 endfun
