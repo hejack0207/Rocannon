@@ -84,13 +84,17 @@ fun! rocannon#OpenAlternate(action, category)
   let fname = expand('%:p:t')
   let role = expand('%:p:h:h') . '/'
   "echom 'will look for: roles/' . role . a:category . '/' . fname
+
   if filereadable( role . a:category . '/' . fname)
     let tgt = '/' . fname
-  elseif a:category == 'files' || a:category == 'templates'
-    " Just open the dir (with vim a file browser like nerdtree or default)
-    let tgt = ''
   else
     let tgt = '/main.yaml'
   endif
+
+  if a:category == 'files' || a:category == 'templates'
+    " Just open the dir (with vim a file browser like nerdtree or default)
+    let tgt = ''
+  endif
+
   exe a:action . role . a:category . tgt
 endfun
